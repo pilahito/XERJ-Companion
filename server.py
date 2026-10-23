@@ -63,9 +63,9 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Length",str(len(b)))
         self.end_headers();self.wfile.write(b)
     def do_GET(self):
-        if self.path in ("/","/style.css","/app.js"):
+        if self.path in ("/","/style.css","/app.js","/i18n.json"):
             name="index.html" if self.path=="/" else self.path[1:]
-            mime={"index.html":"text/html","style.css":"text/css","app.js":"text/javascript"}[name]
+            mime={"index.html":"text/html","style.css":"text/css","app.js":"text/javascript","i18n.json":"application/json"}[name]
             b=(BASE/name).read_bytes()
             self.send_response(200)
             self.send_header("Content-Type",mime+"; charset=utf-8")

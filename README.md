@@ -1,5 +1,7 @@
 # XERJ Companion
 
+**English** · [Español](README.es.md)
+
 **Free, experimental, open-source companion UI for [XERJ](https://github.com/xerj-org/xerj)**. Community project by **[@pilahito](https://github.com/pilahito)**, proposed in [XERJ issue #1755](https://github.com/xerj-org/xerj/issues/1755). Not endorsed by XERJ.
 
 ![UI concept](https://github.com/user-attachments/assets/c32bc0f0-00b7-4940-aafb-537e4ed289fc)
@@ -15,6 +17,8 @@ Requires **Python 3.9+**. No pip packages or paid APIs.
 3. Run `python3 server.py --port 8765`.
 4. Open **http://127.0.0.1:8765** in your browser.
 5. Run `python3 -m unittest discover -v` to test.
+
+The interface ships in English and Spanish: the ES/EN button in the header switches language and remembers the choice (it defaults to your system language).
 
 Search works without Ollama. The Hardware & AI panel reports CPU and basic RAM/GPU information, installed models, and offers explicitly requested model downloads. Downloads require network access and free disk space.
 
