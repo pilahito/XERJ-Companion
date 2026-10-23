@@ -2,7 +2,9 @@
 
 **English** · [Español](README.es.md)
 
-**Free, experimental, open-source companion UI for [XERJ](https://github.com/xerj-org/xerj)**. Community project by **[@pilahito](https://github.com/pilahito)**, proposed in [XERJ issue #1755](https://github.com/xerj-org/xerj/issues/1755). Not endorsed by XERJ.
+**Free, experimental, open-source companion interface for [XERJ](https://github.com/xerj-org/xerj)**, offered as a proposal in [XERJ issue #1755](https://github.com/xerj-org/xerj/issues/1755).
+
+> **Unofficial.** Not affiliated with, reviewed by or endorsed by the XERJ team. The interface is the contribution: XERJ's engine and source code are not mine and are not modified here. This is an adaptation offered to XERJ's original creators, who are free to adopt it, adapt it or ignore it.
 
 ![UI concept](https://github.com/user-attachments/assets/c32bc0f0-00b7-4940-aafb-537e4ed289fc)
 
@@ -27,5 +29,6 @@ Search works without Ollama. The Hardware & AI panel reports CPU and basic RAM/G
 - Only binds to localhost; **not designed for public deployment**. No accounts, authentication or telemetry.
 - Does not modify XERJ itself. Its search endpoint uses an Elasticsearch-compatible query, which must be checked against your configured XERJ version/index mapping.
 - This is a **prototype**; no claim of validated production integration.
+- Unofficial, community proposal: the XERJ team may adopt, adapt or decline it at their discretion.
 - Copyright 2026 pilahito. Source offered under Apache License 2.0, see LICENSE.
 - Ivan and XERJ maintainers are welcome to evaluate, adapt or distribute it with applicable attribution. Maintainer review and contribution rights are theirs to decide. I may archive the standalone repo if the proposal isn't relevant.
