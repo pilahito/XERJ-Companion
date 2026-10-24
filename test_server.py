@@ -36,6 +36,11 @@ class CompanionTests(unittest.TestCase):
             self.assertIn('data-i18n="rail.status.title"',html)
             self.assertEqual(response.status,200)
 
+    def test_query_strings_serve_the_app(self):
+        with urlopen(self.url+"/?demo=1") as response:
+            self.assertEqual(response.status,200)
+            self.assertIn("XERJ",response.read().decode())
+
     def test_i18n_endpoint(self):
         with urlopen(self.url+"/i18n.json") as response:
             self.assertEqual(response.headers.get_content_type(),"application/json")

@@ -1,6 +1,18 @@
 "use strict";
 const $=id=>document.getElementById(id);
 const LANG_KEY="xerj.lang",STATS_KEY="xerj.stats",RAIL_KEY="xerj.rail",RING=327;
+const DEMO=new URLSearchParams(location.search).has("demo");
+const DEMO_HITS=[
+ {id:"1",index:"demo",score:12.4,path:"core/src/indexer/resume.rs",name:"resume.rs",lang:"rust",lines:"L1-L18",
+  note:"Main implementation for resumable indexing.",
+  text:"use crate::checkpoint::{Checkpoint, CheckpointStore};\nuse crate::indexer::{Indexer, IndexerState};\nuse crate::store::DocumentStore;\nuse anyhow::Result;\nuse std::path::Path;\n\npub async fn resume_indexing(\n    index: &Index,\n    store: &DocumentStore,\n    checkpoint_path: impl AsRef<Path>,\n) -> Result<IndexerState> {\n    // Load the last checkpoint if it exists\n    let checkpoint = CheckpointStore::load(checkpoint_path.as_ref())?;\n\n    // Restore indexer state and continue from where it left off\n    indexer.restore(checkpoint).await?;\n    indexer.run(store).await\n}"},
+ {id:"2",index:"demo",score:9.1,path:"core/src/indexer/checkpoint.rs",name:"checkpoint.rs",lang:"rust",lines:"L10-L78",
+  note:"Handles saving and loading index checkpoints.",text:"pub fn load(path: &Path) -> Result<Checkpoint> {\n    serde_json::from_reader(File::open(path)?)\n}"},
+ {id:"3",index:"demo",score:7.8,path:"core/src/store/store.rs",name:"store.rs",lang:"rust",lines:"L42-L120",
+  note:"Persistent storage for index data and checkpoint state.",text:"pub struct DocumentStore {\n    path: PathBuf,\n}"}];
+const DEMO_RECENT=[["Find the exact Rust implementation for resumable indexing","2m"],["How does checkpointing work in XERJ?","18m"],["Show the indexer pipeline code","1h"],["Explain the storage format in store.rs","3h"],["Find where document deduplication happens","5h"]];
+const DEMO_TOP=[["Resumable indexing (resume.rs)",24],["Checkpoint system (checkpoint.rs)",19],["Storage layer (store.rs)",17],["Document deduplication",12],["Indexer pipeline",11]];
+const DEMO_ANSWER="Here's the exact Rust implementation for resumable indexing in XERJ. The core logic is in `resume.rs`, which loads the last checkpoint, restores the indexer state, and continues from where it left off. It uses a persistent checkpoint file `checkpoint.rs` and the storage layer `store.rs` to keep track of progress.";
 const KW=new Set("fn pub use let mut const async await struct impl enum match if else return self for in while crate mod type trait where move ref Some None Ok Err Result Option def class import from function var new this try catch throw interface export default extends".split(" "));
 let I18N=null,lang="en",view="search",statusState="checking";
 let lastHits=[],lastQuery="",currentIndex="*",activeHit=null,indexData=[],messages=[],busy=false;
@@ -140,6 +152,10 @@ function renderCode(hit){
 }
 function renderRecent(){
  const list=$("recentList");if(!list)return;list.replaceChildren();
+ if(DEMO){
+  DEMO_RECENT.forEach(([q,when])=>{const li=el("li");li.append(el("span","dot-i"),el("span","q",q),el("span","when",when));list.append(li)});
+  return;
+ }
  const entries=Object.entries(stats.queries).map(([q,n])=>({q,n})).slice(-8).reverse();
  if(!entries.length){list.append(el("li","empty",t("rail.recent.empty")));return}
  entries.slice(0,6).forEach(({q})=>{
@@ -151,6 +167,10 @@ function renderRecent(){
 }
 function renderTop(){
  const box=$("topList");if(!box)return;box.replaceChildren();
+ if(DEMO){
+  DEMO_TOP.forEach(([name,uses],i)=>{const li=el("li");li.append(el("span","n",String(i+1)),el("span","name",name),el("span","uses",t("rail.top.uses",{n:uses})));box.append(li)});
+  return;
+ }
  const items=Object.entries(stats.sources).sort((a,b)=>b[1]-a[1]).slice(0,5);
  if(!items.length){box.append(el("li","empty",t("rail.top.empty")));return}
  items.forEach(([name,uses],i)=>{
@@ -160,6 +180,20 @@ function renderTop(){
  });
 }
 function renderIndexStatus(){
+ if(DEMO){
+  $("demoBadge").classList.remove("hidden");
+  $("railProgress").classList.remove("hidden");
+  setRaw($("railProgressLabel"),t("demo.indexing"));
+  $("railBar").style.width="68%";
+  $("ringFg").style.strokeDashoffset=String(RING*(1-0.68));
+  setRaw($("ringValue"),"68%");
+  $("railIndexPill").className="pill green";setRaw($("railIndexPill"),"● INDEXING");
+  const cells=document.querySelectorAll(".stats div");
+  const pairs=[[t("demo.documents"),"428,342 / 630,901"],[t("demo.speed"),"1,842 docs/s"],[t("demo.elapsed"),"3m 12s"],[t("demo.estimated"),"1m 41s"]];
+  cells.forEach((cell,i)=>{cell.querySelector("small").textContent=pairs[i][0];cell.querySelector("b").textContent=pairs[i][1]});
+  setKey($("railIndexNote"),"rail.status.note");
+  return;
+ }
  const total=indexData.reduce((sum,i)=>sum+i.docs,0);
  const size=indexData.reduce((sum,i)=>sum+parseSize(i.size),0);
  const health=indexData.length?(["red","yellow","green"].find(h=>indexData.some(i=>i.health===h))||"green"):"none";
@@ -220,6 +254,13 @@ function renderChat(){
  }
  if(rail)rail.scrollTop=rail.scrollHeight;
 }
+function applyDemo(){
+ indexData=[{index:"demo",health:"green",docs:428342,size:"1.4gb"}];
+ renderIndexStatus();renderIndexes();renderTabs();renderSources();renderRecent();renderTop();
+ $("query").value="resumable indexing";
+ activeHit=null;lastHits=[];renderCode(null);
+ setKey($("answerText"),"answer.empty");
+}
 function renderRailState(){
  const state=$("railChatState");if(!state)return;
  setKey(state,busy?"rail.chat.thinking":"rail.chat.ready");
@@ -257,6 +298,15 @@ async function runSearch(){
  const query=$("query").value.trim();
  if(!query||busy)return;
  busy=true;
+ if(DEMO){
+  const q=$("query").value.trim()||"resumable indexing";
+  lastHits=DEMO_HITS.map(h=>Object.assign({},h));lastQuery=q;activeHit=lastHits[0];currentIndex="*";
+  $("crumbQuery").textContent="› "+q;
+  renderTabs();renderSources();renderCode(activeHit);
+  setRaw($("answerText"),DEMO_ANSWER);
+  setKey($("answerMeta"),"answer.sources",{n:3});setRaw($("answerTime"),"· 2.4s");
+  busy=false;return;
+ }
  setKey($("answerText"),"search.searching");
  $("tabs").replaceChildren();
  $("sources").replaceChildren();
@@ -286,6 +336,11 @@ async function runSearch(){
  }finally{busy=false}
 }
 async function explain(){
+ if(DEMO){
+  setRaw($("answerText"),DEMO_ANSWER);
+  setKey($("answerMeta"),"answer.sources",{n:3});setRaw($("answerTime"),"· 2.4s");
+  return;
+ }
  if(!lastHits.length||busy)return;
  busy=true;setKey($("answerText"),"answer.generating");renderRailState();
  const started=performance.now();
@@ -302,6 +357,11 @@ async function explain(){
 async function sendChat(input){
  const prompt=input.value.trim();
  if(!prompt||busy)return;
+ if(DEMO){
+  input.value="";
+  messages.push({role:"user",text:prompt},{role:"local",text:"I'm your local AI assistant, running via Ollama. I can help you explore the XERJ codebase, explain code, or answer questions. Everything runs locally. Free and open source."});
+  renderChat();return;
+ }
  input.value="";
  messages.push({role:"user",text:prompt});
  renderChat();busy=true;renderRailState();
@@ -400,6 +460,7 @@ $("railPrompt").addEventListener("keydown",e=>{if(e.key==="Enter")sendChat($("ra
 fetch("/i18n.json",{cache:"no-store"}).then(r=>r.json()).then(data=>{
  I18N=data;
  applyLang(currentLang());
+ if(DEMO){statusState="online";renderStatus();applyDemo();return}
  try{if(localStorage.getItem(RAIL_KEY)==="1")document.querySelector(".app").classList.add("rail-open")}catch(e){}
  renderChat();
  loadModels();

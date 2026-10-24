@@ -70,6 +70,7 @@ main{display:flex;flex-direction:column;min-width:0;background:radial-gradient(9
 .spark{color:#a78bfa}
 .pill{border:1px solid #2b3a5c;background:#0d1730;color:#a9b8d9;border-radius:999px;padding:2px 9px;font-size:10.5px;white-space:nowrap}
 .pill.green{border-color:#1f5c48;background:#07231b;color:#5fe0b0}
+.pill.demo{border-color:#8a6a12;background:#2a1f05;color:#f0c768;letter-spacing:1px}
 .pill.red{border-color:#5c2323;background:#230a0a;color:#fca5a5}
 .meta{color:var(--dim);font-size:11px}
 .answer-text{margin:0;color:#cfd9f0;font-size:13.5px;line-height:1.65;white-space:pre-line}
@@ -112,6 +113,10 @@ main{display:flex;flex-direction:column;min-width:0;background:radial-gradient(9
 .stats div{display:flex;flex-direction:column;min-width:0}
 .stats small{color:var(--dim);font-size:9.5px;letter-spacing:.6px;text-transform:uppercase}
 .stats b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rail-progress{margin:10px 0 0}
+.rail-progress-label{color:#8fa0c6;font-size:10.5px;margin-bottom:6px}
+.bar{height:6px;border-radius:99px;background:#131c33;overflow:hidden}
+.bar i{display:block;height:100%;width:68%;border-radius:99px;background:linear-gradient(90deg,#4f7cf7,#a78bfa)}
 .rail-note{color:#55618a;font-size:10px;margin:10px 0 0;line-height:1.4}
 .linkbtn{background:none;border:0;color:#7f9cff;font:inherit;font-size:11px;cursor:pointer;padding:0}
 .recent{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px}
