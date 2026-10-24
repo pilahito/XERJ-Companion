@@ -24,6 +24,24 @@ La interfaz viene en inglés y en español: el botón ES/EN de la cabecera cambi
 
 La búsqueda funciona sin Ollama. El panel **Hardware e IA** muestra la CPU y datos básicos de RAM/GPU, los modelos de Ollama instalados y permite descargar un modelo solo cuando se pide explícitamente. Las descargas necesitan conexión a Internet y espacio libre en disco.
 
+## Navegador o escritorio
+
+- **Versión navegador** — `python3 server.py --port 8765` y abre http://127.0.0.1:8765. Solo necesita Python 3.9.
+- **Versión escritorio** — `python3 desktop.py`: el mismo servidor, en una ventana nativa si tienes [pywebview](https://pywebview.flowrl.com/), y si no en una ventana de navegador en modo aplicación (o tu navegador por defecto). `--browser` fuerza el navegador y `--no-open` solo sirve la página.
+
+## Paquetes
+
+Los binarios están adjuntos en [Releases](https://github.com/pilahito/XERJ-Companion/releases):
+
+| Plataforma | Fichero | Notas |
+| --- | --- | --- |
+| Windows | `XERJ-Companion.exe` | Un solo fichero. Sin firmar, SmartScreen puede avisar. |
+| Linux (cualquiera) | `XERJ-Companion` | Binario único, compilado en Ubuntu 24.04. |
+| Debian / Ubuntu | `xerj-companion_<version>_all.deb` | Añade una entrada al menú de aplicaciones. |
+| Arch | [packaging/PKGBUILD](packaging/PKGBUILD) | `makepkg -si` contra la etiqueta del release. |
+
+Para construirlos tú: `python3 packaging/build_deb.py` no necesita `dpkg`, y `pyinstaller packaging/xerj-companion.spec` genera el binario único.
+
 ## Límites del proyecto
 
 - Solo escucha en localhost; **no está pensado para despliegue público**. Sin cuentas, autenticación ni telemetría.

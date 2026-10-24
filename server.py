@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Local-only XERJ Companion demo; Python 3.9+, no pip packages."""
-import json, os, platform, shutil, subprocess, threading
+import json, os, platform, shutil, subprocess, sys, threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-BASE=Path(__file__).parent
+BASE=Path(getattr(sys,"_MEIPASS",Path(__file__).parent))
 XERJ="http://127.0.0.1:9200"
 OLLAMA="http://127.0.0.1:11434"
 MODELS={"llama3.2:1b","llama3.2","qwen2.5-coder:1.5b","qwen2.5-coder:7b"}

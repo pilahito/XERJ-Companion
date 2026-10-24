@@ -1,0 +1,36 @@
+# Maintainer: pilahito <57416155+pilahito@users.noreply.github.com>
+pkgname=xerj-companion
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Unofficial companion interface for XERJ: local search, highlighted sources and optional local AI chat"
+arch=('any')
+url="https://github.com/pilahito/XERJ-Companion"
+license=('Apache-2.0')
+depends=('python')
+optdepends=(
+  'python-gobject: native window instead of an app-mode browser'
+  'webkit2gtk-4.1: native window instead of an app-mode browser'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pilahito/XERJ-Companion/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  install -dm755 "$pkgdir/usr/lib/xerj-companion" \
+                  "$pkgdir/usr/bin" \
+                  "$pkgdir/usr/share/applications" \
+                  "$pkgdir/usr/share/icons/hicolor/512x512/apps" \
+                  "$pkgdir/usr/share/doc/xerj-companion"
+  install -m755 "$srcdir/XERJ-Companion-$pkgver/desktop.py" \
+                "$srcdir/XERJ-Companion-$pkgver/server.py" \
+                "$pkgdir/usr/lib/xerj-companion/"
+  install -m644 "$srcdir/XERJ-Companion-$pkgver"/{index.html,app.js,style.css,i18n.json} \
+                "$pkgdir/usr/lib/xerj-companion/"
+  printf '#!/bin/sh\nexec python3 /usr/lib/xerj-companion/desktop.py "$@"\n' > "$pkgdir/usr/bin/xerj-companion"
+  chmod 755 "$pkgdir/usr/bin/xerj-companion"
+  install -m644 "$srcdir/XERJ-Companion-$pkgver/packaging/xerj-companion.desktop" \
+                "$pkgdir/usr/share/applications/"
+  install -m644 "$srcdir/XERJ-Companion-$pkgver/assets/icon.png" \
+                "$pkgdir/usr/share/icons/hicolor/512x512/apps/xerj-companion.png"
+  install -m644 "$srcdir/XERJ-Companion-$pkgver"/{README.md,README.es.md,LICENSE} \
+                "$pkgdir/usr/share/doc/xerj-companion/"
+}

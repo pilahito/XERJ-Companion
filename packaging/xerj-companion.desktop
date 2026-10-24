@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XERJ Companion
+GenericName=Code search companion
+Comment=Unofficial companion interface for XERJ: local search, highlighted sources and optional local AI chat
+Exec=xerj-companion
+TryExec=xerj-companion
+Icon=xerj-companion
+Terminal=false
+Categories=Development;
+Keywords=xerj;search;code;ollama;local;
+StartupWMClass=XERJ Companion

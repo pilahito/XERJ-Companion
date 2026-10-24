@@ -24,6 +24,24 @@ The interface ships in English and Spanish: the ES/EN button in the header switc
 
 Search works without Ollama. The Hardware & AI panel reports CPU and basic RAM/GPU information, installed models, and offers explicitly requested model downloads. Downloads require network access and free disk space.
 
+## Browser or desktop
+
+- **Browser version** — `python3 server.py --port 8765`, then open http://127.0.0.1:8765. Needs only Python 3.9.
+- **Desktop version** — `python3 desktop.py`: the same server, opened in a native window when [pywebview](https://pywebview.flowrl.com/) is installed, otherwise in an app-mode browser window (or your default browser). `--browser` forces the browser, `--no-open` serves only.
+
+## Packages
+
+Prebuilt downloads are attached to [Releases](https://github.com/pilahito/XERJ-Companion/releases):
+
+| Platform | File | Notes |
+| --- | --- | --- |
+| Windows | `XERJ-Companion.exe` | Single file. Unsigned, so SmartScreen may warn. |
+| Linux (any) | `XERJ-Companion` | Single binary, built on Ubuntu 24.04. |
+| Debian / Ubuntu | `xerj-companion_<version>_all.deb` | Adds an entry to the application menu. |
+| Arch | [packaging/PKGBUILD](packaging/PKGBUILD) | `makepkg -si` against the release tag. |
+
+Build them yourself: `python3 packaging/build_deb.py` needs no `dpkg`, and `pyinstaller packaging/xerj-companion.spec` produces the single-file binary.
+
 ## Project boundaries
 
 - Only binds to localhost; **not designed for public deployment**. No accounts, authentication or telemetry.
