@@ -24,7 +24,7 @@ Architecture: all
 Maintainer: pilahito <57416155+pilahito@users.noreply.github.com>
 Depends: python3 (>= 3.9)
 Recommends: python3-gi, gir1.2-webkit2-4.1
-Homepage: https://github.com/pilahito/XERJ-Companion
+Homepage: https://github.com/pilahito/XERJ-Companion-NO-OFICIAL
 Description: Unofficial companion interface for XERJ
  Local-first dashboard for XERJ with source-backed search, highlighted
  results, live index counts and optional local AI chat through Ollama.
@@ -95,7 +95,7 @@ def build(version, out_dir):
             add(tar, "./usr/share/doc/xerj-companion/" + name, (ROOT / name).read_bytes())
         add(tar, "./usr/share/doc/xerj-companion/copyright",
             ("Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/\n"
-             "Upstream-Name: XERJ Companion\nSource: https://github.com/pilahito/XERJ-Companion\n\n"
+             "Upstream-Name: XERJ Companion\nSource: https://github.com/pilahito/XERJ-Companion-NO-OFICIAL\n\n"
              "Files: *\nCopyright: 2026 pilahito\nLicense: Apache-2.0\n"
              " On Debian systems the full text is in /usr/share/common-licenses/Apache-2.0\n"
              " and in /usr/share/doc/xerj-companion/LICENSE.\n").encode())

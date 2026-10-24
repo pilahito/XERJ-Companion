@@ -36,7 +36,7 @@ def open_native(url):
         import webview
     except Exception:
         return False
-    window = webview.create_window("XERJ Companion", url, width=1400, height=900, min_size=(960, 640))
+    window = webview.create_window("XERJ Companion — No oficial", url, width=1400, height=900, min_size=(960, 640))
     webview.start()
     del window
     return True

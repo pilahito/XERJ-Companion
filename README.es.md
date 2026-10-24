@@ -1,4 +1,4 @@
-# XERJ Companion
+# XERJ Companion — No oficial
 
 [English](README.md) · **Español**
 
@@ -64,12 +64,12 @@ El mismo servidor, en una ventana nativa si tienes [pywebview](https://pywebview
 
 ### Paquetes
 
-Los binarios están en [Releases](https://github.com/pilahito/XERJ-Companion/releases/latest):
+Los binarios están en [Releases](https://github.com/pilahito/XERJ-Companion-NO-OFICIAL-NO-OFICIAL/releases/latest):
 
 | Plataforma | Fichero | Notas |
 | --- | --- | --- |
-| Windows | `XERJ-Companion.exe` | Un solo fichero. Sin firmar, SmartScreen puede avisar. |
-| Linux (cualquiera) | `XERJ-Companion` | Binario único compilado en Ubuntu 24.04. La ventana nativa necesita `webkit2gtk`; si no, abre el navegador en modo aplicación. |
+| Windows | `XERJ-Companion-NO-OFICIAL.exe` | Un solo fichero. Sin firmar, SmartScreen puede avisar. |
+| Linux (cualquiera) | `XERJ-Companion-NO-OFICIAL` | Binario único compilado en Ubuntu 24.04. La ventana nativa necesita `webkit2gtk`; si no, abre el navegador en modo aplicación. |
 | Debian / Ubuntu | `xerj-companion_<version>_all.deb` | Añade una entrada al menú de aplicaciones. `sudo apt install ./xerj-companion_*_all.deb` |
 | Arch | [packaging/PKGBUILD](packaging/PKGBUILD) | `makepkg -si` contra la etiqueta del release. |
 

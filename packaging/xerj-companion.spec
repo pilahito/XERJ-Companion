@@ -23,7 +23,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name="XERJ-Companion",
+    name="XERJ-Companion-NO-OFICIAL",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

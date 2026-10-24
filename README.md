@@ -1,4 +1,4 @@
-# XERJ Companion
+# XERJ Companion — Unofficial
 
 **English** · [Español](README.es.md)
 
@@ -64,12 +64,12 @@ Same server, opened in a native window when [pywebview](https://pywebview.flowrl
 
 ### Packages
 
-Prebuilt downloads are in [Releases](https://github.com/pilahito/XERJ-Companion/releases/latest):
+Prebuilt downloads are in [Releases](https://github.com/pilahito/XERJ-Companion-NO-OFICIAL-NO-OFICIAL/releases/latest):
 
 | Platform | File | Notes |
 | --- | --- | --- |
-| Windows | `XERJ-Companion.exe` | Single file. Unsigned, so SmartScreen may warn. |
-| Linux (any) | `XERJ-Companion` | Single binary built on Ubuntu 24.04. A native window needs `webkit2gtk`; otherwise it opens an app-mode browser. |
+| Windows | `XERJ-Companion-NO-OFICIAL.exe` | Single file. Unsigned, so SmartScreen may warn. |
+| Linux (any) | `XERJ-Companion-NO-OFICIAL` | Single binary built on Ubuntu 24.04. A native window needs `webkit2gtk`; otherwise it opens an app-mode browser. |
 | Debian / Ubuntu | `xerj-companion_<version>_all.deb` | Adds an application-menu entry. `sudo apt install ./xerj-companion_*_all.deb` |
 | Arch | [packaging/PKGBUILD](packaging/PKGBUILD) | `makepkg -si` against the release tag. |
 
