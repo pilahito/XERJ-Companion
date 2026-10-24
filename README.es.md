@@ -6,6 +6,10 @@
 
 > **No oficial.** No está afiliada, revisada ni respaldada por el equipo de XERJ. Lo que se aporta es la interfaz: el motor y el código de XERJ no son míos y aquí no se modifican. Es una adaptación ofrecida a los creadores originales de XERJ, que pueden adoptarla, adaptarla o descartarla.
 
+![Concepto de la propuesta](https://github.com/user-attachments/assets/c32bc0f0-00b7-4940-aafb-537e4ed289fc)
+
+*El concepto que se compartió en la propuesta. `?demo=1` lo reproduce cifra por cifra; las capturas de abajo son la app real contra un endpoint local.*
+
 ![Vista de búsqueda con resultados, código resaltado y el panel del índice](assets/screenshot-search.png)
 
 *Vista de búsqueda: pestañas por índice, respuesta basada en tus resultados, código resaltado con números de línea y una columna derecha con el estado real del índice, consultas recientes y chat con IA local.*

@@ -6,6 +6,10 @@
 
 > **Unofficial.** Not affiliated with, reviewed by or endorsed by the XERJ team. The interface is the contribution: XERJ's engine and source code are not mine and are not modified here. This is an adaptation offered to XERJ's original creators, who are free to adopt it, adapt it or ignore it.
 
+![Proposal concept](https://github.com/user-attachments/assets/c32bc0f0-00b7-4940-aafb-537e4ed289fc)
+
+*The concept shared in the proposal. `?demo=1` reproduces it number for number; the screenshots below are the real thing against a local endpoint.*
+
 ![Search view with results, highlighted code and the live index rail](assets/screenshot-search.png)
 
 *Search view: per-index tabs, an answer grounded in your hits, highlighted code with line numbers, and a right rail with live index counts, recent queries and local AI chat.*
