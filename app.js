@@ -189,7 +189,7 @@ function renderIndexes(){
   const row=el("tr");
   const name=el("td");const dot=el("span","dot-health");dot.style.background=i.health==="green"?"#34d399":i.health==="yellow"?"#f59e0b":"#f87171";
   name.append(dot,document.createTextNode(i.index));
-  row.append(name,el("td","",fmt(i.docs)),el("td","",i.size||"—"),el("td","",i.health||"—"));
+  row.append(name,el("td","",fmt(i.docs)),el("td","",i.size?formatSize(parseSize(i.size)):("—")),el("td","",i.health||"—"));
   body.append(row);
  });
 }
@@ -232,7 +232,7 @@ function applyLang(code){
  document.querySelectorAll("[data-i18n]").forEach(n=>{n.textContent=t(n.dataset.i18n,argsOf(n))});
  document.querySelectorAll("[data-i18n-ph]").forEach(n=>{n.placeholder=t(n.dataset.i18nPh)});
  const other=lang==="en"?"es":"en";
- $("langBtn").textContent=other.toUpperCase();
+ $("langBtn").textContent=lang.toUpperCase();
  $("langBtn").setAttribute("aria-label",t(other==="en"?"lang.toEnglish":"lang.toSpanish"));
  $("langBtn").title=$("langBtn").getAttribute("aria-label");
  renderStatus();renderTabs();renderSources();renderIndexStatus();renderIndexes();
