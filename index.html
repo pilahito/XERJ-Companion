@@ -1,17 +1,141 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>XERJ Companion — Local Code Intelligence</title><link rel="stylesheet" href="/style.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>XERJ Companion</title><link rel="stylesheet" href="/style.css"></head>
 <body>
-<div class="shell">
-<aside class="sidebar"><div class="logo"><span class="mark">✧</span><div><strong>XERJ</strong><small data-i18n="sidebar.tag">CODE · KNOWLEDGE · LOCAL</small><span class="badge" data-i18n="sidebar.badge">UNOFFICIAL</span></div></div>
-<nav><button class="nav active" data-view="search">⌕ <span data-i18n="nav.search">Search</span></button><button class="nav" data-view="chat">◈ <span data-i18n="nav.chat">Chat</span></button><button class="nav" data-view="hardware">▣ <span data-i18n="nav.hardware">Hardware &amp; AI</span></button><button class="nav" data-view="about">ⓘ <span data-i18n="nav.about">About</span></button></nav>
-<div class="side-bottom"><div class="mini-card">✦ <b>XERJ Companion</b><p data-i18n="sidebar.note">Unofficial, optional open-source interface for local code intelligence. Only the interface lives here.</p></div><a href="https://github.com/pilahito/XERJ-Companion" data-i18n="sidebar.credit">Interface by @pilahito ↗</a></div></aside>
-<main><header><div><small data-i18n="header.kicker">UNOFFICIAL / COMMUNITY ADD-ON</small><h1 id="heading" data-i18n="view.search.title">Search your codebase</h1></div><div class="header-actions"><button id="langBtn" class="lang" type="button" aria-label="Switch language" title="Switch language">ES</button><span id="status" class="status" data-i18n="status.checking">● Checking XERJ</span></div></header>
-<section id="search" class="view"><div class="hero"><span class="eyebrow" data-i18n="search.eyebrow">XERJ · LOCAL SEARCH</span><h2 data-i18n="search.title">Find the code that already works.</h2><p data-i18n="search.subtitle">Source-backed search over your local XERJ indexes. No account. No paid API.</p></div>
-<div class="searchbar"><input id="query" data-i18n-ph="search.placeholder" placeholder="Find the exact Rust implementation for resumable indexing"><button id="searchBtn" class="primary" data-i18n="search.button">Search →</button></div>
-<div class="filters"><label><span data-i18n="search.indexLabel">Index pattern</span> <input id="index" value="*" placeholder="*"></label><span data-i18n="search.chipCode">Code</span><span data-i18n="search.chipDocs">Docs</span><span data-i18n="search.chipRefs">References</span></div>
-<div class="section-title"><h3 data-i18n="search.resultsTitle">Source results</h3><span id="resultCount" data-i18n="search.idle">Run a search to see referenced passages</span></div><div id="results" class="results"><div class="empty">⌕<p data-i18n="search.empty">Connect a local XERJ index and search to display matches.</p></div></div></section>
-<section id="chat" class="view hidden"><div class="hero"><span class="eyebrow" data-i18n="chat.eyebrow">OPTIONAL LOCAL AI</span><h2 data-i18n="chat.title">Ask your code a question.</h2><p data-i18n="chat.subtitle">Ollama generates answers locally using the retrieved search results as optional context.</p></div><div class="panel"><label><span data-i18n="chat.modelLabel">Model</span> <select id="chatModel"><option value="llama3.2:1b">Llama 3.2 1B</option><option value="llama3.2">Llama 3.2 3B</option><option value="qwen2.5-coder:1.5b">Qwen 2.5 Coder 1.5B</option><option value="qwen2.5-coder:7b">Qwen 2.5 Coder 7B</option></select></label><textarea id="prompt" data-i18n-ph="chat.placeholder" placeholder="Explain how resumable indexing works..."></textarea><button class="primary" id="chatBtn" data-i18n="chat.button">Ask local AI →</button><pre id="answer" class="answer" data-i18n="chat.answerIdle">No response yet.</pre></div></section>
-<section id="hardware" class="view hidden"><div class="hero"><span class="eyebrow" data-i18n="hardware.eyebrow">LOCAL SETUP</span><h2 data-i18n="hardware.title">Your hardware, your AI.</h2><p data-i18n="hardware.subtitle">Detect basic system resources, see installed Ollama models and optionally download one.</p></div><div class="cards"><div class="panel"><h3 data-i18n="hardware.detectTitle">System detection</h3><div id="hardwareInfo" data-i18n="hardware.idle">Click Detect hardware to begin.</div><button id="detectBtn" class="primary" data-i18n="hardware.detectButton">Detect hardware</button></div><div class="panel"><h3 data-i18n="hardware.modelsTitle">Ollama models</h3><div id="models" data-i18n="hardware.modelsIdle">No models loaded.</div><label><span data-i18n="hardware.pullLabel">Download model</span> <select id="pullModel"><option>llama3.2:1b</option><option>llama3.2</option><option>qwen2.5-coder:1.5b</option><option>qwen2.5-coder:7b</option></select></label><button id="pullBtn" data-i18n="hardware.pullButton">Download selected model</button><p class="hint" data-i18n="hardware.hint">Requires installed Ollama and Internet access. Downloads may be several GB.</p></div></div></section>
-<section id="about" class="view hidden"><div class="hero"><span class="eyebrow" data-i18n="about.eyebrow">COMMUNITY PROPOSAL</span><h2 data-i18n="about.title">Built to complement XERJ.</h2><p data-i18n="about.subtitle">Unofficial companion interface by @pilahito under Apache-2.0. Not affiliated with, reviewed by or endorsed by the XERJ team.</p></div><div class="panel"><p data-i18n="about.body">Only the interface is authored here: XERJ's engine and source code belong to the XERJ team and are not modified. It is an adaptation offered to XERJ's original creators, who are free to adopt it, adapt it or ignore it.</p><a href="https://github.com/xerj-org/xerj/issues/1755" data-i18n="about.link">View proposal to the XERJ maintainers ↗</a></div></section>
-<footer data-i18n="footer">UNOFFICIAL COMMUNITY CONCEPT · INTERFACE BY @PILAHITO · FREE &amp; OPEN SOURCE · LOCAL-FIRST</footer></main>
-</div><script src="/app.js"></script></body></html>
+<div class="app">
+<aside class="side">
+ <div class="brand"><span class="mark">✦</span><div><strong>XERJ</strong><small data-i18n="side.tag">Code · Knowledge · Local</small><span class="badge" data-i18n="side.badge">UNOFFICIAL</span></div></div>
+ <nav class="nav">
+  <button class="nav-item active" data-view="search"><span class="ico">⌕</span><span data-i18n="nav.search">Search</span></button>
+  <button class="nav-item" data-view="chat"><span class="ico">◈</span><span data-i18n="nav.chat">Chat</span></button>
+  <button class="nav-item" data-view="indexes"><span class="ico">▤</span><span data-i18n="nav.indexes">Indexes</span></button>
+  <button class="nav-item" data-view="hardware"><span class="ico">▣</span><span data-i18n="nav.hardware">Hardware &amp; AI</span></button>
+  <button class="nav-item" data-view="analytics"><span class="ico">◔</span><span data-i18n="nav.analytics">Analytics</span></button>
+  <button class="nav-item" data-view="about"><span class="ico">ⓘ</span><span data-i18n="nav.about">About</span></button>
+ </nav>
+ <div class="side-foot">
+  <a class="side-link" href="https://github.com/xerj-org/xerj/issues/1755"><span class="ico">⌂</span><div><b data-i18n="side.opensource.title">Open Source</b><small data-i18n="side.opensource.body">Free · Local · Community</small></div></a>
+  <div class="side-card"><div class="side-card-head">✦ <b>XERJ Companion</b><span class="tag">BETA</span></div><p data-i18n="side.companion">Optional local AI chat via Ollama. Free, local, no paid product.</p></div>
+  <button id="configureBtn" class="ghost block" data-i18n="side.configure">Configure Ollama</button>
+  <a class="credit" href="https://github.com/pilahito/XERJ-Companion" data-i18n="side.credit">Interface by @pilahito ↗</a>
+ </div>
+</aside>
+
+<main>
+ <div class="topbar">
+  <div class="crumbs"><span class="arrows">‹ ›</span><span data-i18n="crumb.search">Search</span><span class="sep">›</span><span class="crumb-strong" data-i18n="crumb.results">Results</span><span id="crumbQuery" class="crumb-query"></span></div>
+  <div class="top-actions">
+   <span class="chip"><i class="dot"></i><span data-i18n="top.localmode">Local Mode</span></span>
+   <span class="chip soft" data-i18n="top.ollama">Ollama (optional)</span>
+   <button id="langBtn" class="lang" type="button" aria-label="Switch language">ES</button>
+   <span id="status" class="status" data-i18n="status.checking">● Checking XERJ</span>
+  </div>
+ </div>
+ <div class="scroll">
+
+  <section id="search" class="view">
+   <div class="searchrow">
+    <span class="search-ico">⌕</span>
+    <input id="query" data-i18n-ph="search.placeholder" placeholder="Find the exact Rust implementation for resumable indexing">
+    <button id="searchBtn" class="primary" data-i18n="search.button">Search</button>
+   </div>
+   <div class="tabs" id="tabs"></div>
+
+   <article class="panel answer-panel">
+    <header class="panel-head">
+     <span class="spark">✦</span><h2 data-i18n="answer.title">Answer</h2>
+     <span class="pill green" data-i18n="answer.local">From your local corpus</span>
+     <span class="spacer"></span>
+     <span class="meta" id="answerMeta"></span><span class="meta" id="answerTime"></span>
+     <button id="explainBtn" class="ghost small" data-i18n="answer.explain">Explain results</button>
+    </header>
+    <p id="answerText" class="answer-text" data-i18n="answer.empty">Run a search to get an answer grounded in your own sources.</p>
+   </article>
+
+   <article id="codeCard" class="panel code-card hidden">
+    <header class="panel-head tight">
+     <span class="file-ico">▤</span><b id="codeFile" class="file-name"></b><span id="codePath" class="file-path"></span>
+     <span class="spacer"></span>
+     <button id="copyBtn" class="ghost small" data-i18n="code.copy">Copy</button>
+    </header>
+    <div id="codeBody" class="code"></div>
+   </article>
+
+   <section class="sources">
+    <div class="section-head"><h3 data-i18n="sources.title">Source references</h3><span class="meta" id="sourcesMeta"></span></div>
+    <div class="source-row" id="sources"></div>
+   </section>
+  </section>
+
+  <section id="chat" class="view hidden">
+   <div class="hero"><span class="eyebrow" data-i18n="chat.eyebrow">Optional local AI</span><h1 data-i18n="chat.title">Ask your code a question</h1><p data-i18n="chat.subtitle">Answers are generated locally with Ollama, grounded in the results you retrieved.</p></div>
+   <div class="panel chat-panel">
+    <div id="chatLog" class="chat-log"><div class="bubble local" data-i18n="chat.intro">I am your local assistant running on Ollama. I can explain code or answer questions about your corpus. Everything stays on this machine.</div></div>
+    <div class="chat-row"><select id="chatModel"></select><input id="chatPrompt" data-i18n-ph="chat.placeholder" placeholder="Ask a question about your code..."><button id="chatSend" class="primary" data-i18n="chat.send">Send</button></div>
+   </div>
+  </section>
+
+  <section id="indexes" class="view hidden">
+   <div class="hero"><span class="eyebrow" data-i18n="indexes.eyebrow">Corpus</span><h1 data-i18n="indexes.title">Your local indexes</h1><p data-i18n="indexes.subtitle">Read live from your XERJ endpoint; nothing is stored or uploaded.</p></div>
+   <div class="panel"><table class="table"><thead><tr><th data-i18n="indexes.name">Index</th><th data-i18n="indexes.docs">Documents</th><th data-i18n="indexes.size">Size</th><th data-i18n="indexes.health">Health</th></tr></thead><tbody id="indexTable"></tbody></table></div>
+  </section>
+
+  <section id="hardware" class="view hidden">
+   <div class="hero"><span class="eyebrow" data-i18n="hardware.eyebrow">Local setup</span><h1 data-i18n="hardware.title">Your hardware, your AI</h1><p data-i18n="hardware.subtitle">Detect basic system resources, see installed Ollama models and optionally download one.</p></div>
+   <div class="cards">
+    <div class="panel"><h3 data-i18n="hardware.detectTitle">System detection</h3><div id="hardwareInfo" class="pre" data-i18n="hardware.idle">Click Detect hardware to begin.</div><button id="detectBtn" class="primary" data-i18n="hardware.detectButton">Detect hardware</button></div>
+    <div class="panel"><h3 data-i18n="hardware.modelsTitle">Ollama models</h3><div id="models" class="muted" data-i18n="hardware.modelsIdle">No models loaded.</div><label class="field"><span data-i18n="hardware.pullLabel">Download model</span><select id="pullModel"><option>llama3.2:1b</option><option>llama3.2</option><option>qwen2.5-coder:1.5b</option><option>qwen2.5-coder:7b</option></select></label><button id="pullBtn" class="ghost" data-i18n="hardware.pullButton">Download selected model</button><p class="hint" data-i18n="hardware.hint">Requires installed Ollama and Internet access. Downloads may be several GB.</p></div>
+   </div>
+  </section>
+
+  <section id="analytics" class="view hidden">
+   <div class="hero"><span class="eyebrow" data-i18n="analytics.eyebrow">Local analytics</span><h1 data-i18n="analytics.title">What you have been looking for</h1><p data-i18n="analytics.subtitle">Counted in this browser only, never sent anywhere.</p></div>
+   <div class="cards">
+    <div class="panel"><h3 data-i18n="analytics.searches">Searches</h3><div id="analyticsCount" class="big-number">0</div></div>
+    <div class="panel"><h3 data-i18n="analytics.queries">Most repeated queries</h3><ol id="analyticsQueries" class="ranked"></ol></div>
+    <div class="panel"><h3 data-i18n="analytics.sources">Most copied sources</h3><ol id="analyticsSources" class="ranked"></ol></div>
+   </div>
+  </section>
+
+  <section id="about" class="view hidden">
+   <div class="hero"><span class="eyebrow" data-i18n="about.eyebrow">Community proposal</span><h1 data-i18n="about.title">Built to complement XERJ</h1><p data-i18n="about.subtitle">Unofficial companion interface by @pilahito under Apache-2.0. Not affiliated with, reviewed by or endorsed by the XERJ team.</p></div>
+   <div class="panel"><p data-i18n="about.body">Only the interface is authored here: XERJ's engine and source code belong to the XERJ team and are not modified. It is an adaptation offered to XERJ's original creators, who are free to adopt it, adapt it or ignore it.</p><a href="https://github.com/xerj-org/xerj/issues/1755" data-i18n="about.link">View proposal to the XERJ maintainers ↗</a></div>
+  </section>
+
+  <footer data-i18n="footer">UNOFFICIAL COMMUNITY CONCEPT · INTERFACE BY @PILAHITO · FREE &amp; OPEN SOURCE · LOCAL-FIRST</footer>
+ </div>
+</main>
+
+<aside class="rail">
+ <section class="panel rail-panel">
+  <header class="panel-head"><h3 data-i18n="rail.status.title">Live index status</h3><span class="spacer"></span><span class="pill green" id="railIndexPill"></span></header>
+  <div class="ring-wrap">
+   <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><circle class="ring-bg" cx="60" cy="60" r="52"></circle><circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"></circle></svg>
+   <div class="ring-label"><b id="ringValue">—</b><small data-i18n="rail.status.docs">Documents</small></div>
+  </div>
+  <div class="stats">
+   <div><small data-i18n="rail.status.docs">Documents</small><b id="statDocs">—</b></div>
+   <div><small data-i18n="rail.status.indices">Indexes</small><b id="statIndices">—</b></div>
+   <div><small data-i18n="rail.status.size">Size</small><b id="statSize">—</b></div>
+   <div><small data-i18n="rail.status.health">Health</small><b id="statHealth">—</b></div>
+  </div>
+  <p class="rail-note" id="railIndexNote" data-i18n="rail.status.note">Read from your local endpoint. Speeds and ETA are not exposed by XERJ.</p>
+ </section>
+
+ <section class="panel rail-panel">
+  <header class="panel-head"><h3 data-i18n="rail.recent.title">Recent queries</h3><span class="spacer"></span><button class="linkbtn" id="seeAllBtn" data-i18n="rail.recent.seeAll">See all</button></header>
+  <ul id="recentList" class="recent"></ul>
+ </section>
+
+ <section class="panel rail-panel">
+  <header class="panel-head"><h3 data-i18n="rail.top.title">Top reused solutions</h3></header>
+  <ol id="topList" class="ranked compact"></ol>
+ </section>
+
+ <section class="panel rail-panel chat-rail">
+  <header class="panel-head"><h3 data-i18n="rail.chat.title">Local AI chat</h3><span class="spacer"></span><span class="pill" id="railChatState"></span></header>
+  <div id="railChatLog" class="rail-chat-log"></div>
+  <div class="rail-chat-row"><input id="railPrompt" data-i18n-ph="rail.chat.placeholder" placeholder="Ask a question about your code..."><button id="railSend" class="primary small" data-i18n="rail.chat.send">Send</button></div>
+ </section>
+</aside>
+</div>
+<script src="/app.js"></script></body></html>

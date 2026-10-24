@@ -12,8 +12,7 @@ import server
 
 BASE=Path(__file__).parent
 CATALOG=json.loads((BASE/"i18n.json").read_text(encoding="utf-8"))
-DYNAMIC_KEYS={"view.search.title","view.chat.title","view.hardware.title","view.about.title",
-              "status.checking","status.online","status.offline","status.backend"}
+DYNAMIC_KEYS={"status.checking","status.online","status.offline","status.backend"}
 
 class CompanionTests(unittest.TestCase):
     @classmethod
@@ -33,6 +32,8 @@ class CompanionTests(unittest.TestCase):
             html=response.read().decode()
             self.assertIn("XERJ Companion",html)
             self.assertIn('data-i18n="nav.search"',html)
+            self.assertIn('id="tabs"',html)
+            self.assertIn('data-i18n="rail.status.title"',html)
             self.assertEqual(response.status,200)
 
     def test_i18n_endpoint(self):
@@ -54,7 +55,7 @@ class CompanionTests(unittest.TestCase):
         html=(BASE/"index.html").read_text(encoding="utf-8")
         script=(BASE/"app.js").read_text(encoding="utf-8")
         used=set(re.findall(r'data-i18n(?:-ph)?="([^"]+)"',html))
-        used|=set(re.findall(r'\bt\("([^"]+)"\)',script))
+        used|=set(re.findall(r'\bt\("([^"]+)"',script))
         used|=set(re.findall(r'setKey\([^,]+,\s*"([^"]+)"\)',script))
         used|=set(re.findall(r'emptyBox\("([^"]+)"\)',script))
         used|=DYNAMIC_KEYS
