@@ -113,7 +113,8 @@ pyinstaller packaging/xerj-companion.spec
 | Search returns "Local service unavailable" | The endpoint answered an error: check XERJ's logs and the index name. |
 | **Local AI unavailable** | Ollama is not running, or the chosen model is not installed (`ollama list`). |
 | Hardware panel says unknown RAM/GPU | Only Linux, macOS and Windows are probed; GPU detection needs `nvidia-smi`. |
-| Stale interface after updating | Hard reload (`Ctrl+Shift+R`); the server sends `Cache-Control: no-store` for JSON only. |
+| Stale interface after updating | Hard reload (`Ctrl+Shift+R`); the server sends `Cache-Control: no-store` for every asset. |
+| Right rail missing in a narrow window | The three-column layout needs ~1180 px. Below that the rail hides; the **▥** button in the header opens it as a drawer. |
 | Windows warns about the `.exe` | Expected: the binary is unsigned. Build it yourself from the tag if you prefer. |
 
 ## Limits and honesty

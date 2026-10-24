@@ -54,7 +54,7 @@ class CompanionTests(unittest.TestCase):
     def test_i18n_covers_markup_and_scripts(self):
         html=(BASE/"index.html").read_text(encoding="utf-8")
         script=(BASE/"app.js").read_text(encoding="utf-8")
-        used=set(re.findall(r'data-i18n(?:-ph)?="([^"]+)"',html))
+        used=set(re.findall(r'data-i18n(?:-ph|-aria)?="([^"]+)"',html))
         used|=set(re.findall(r'\bt\("([^"]+)"',script))
         used|=set(re.findall(r'setKey\([^,]+,\s*"([^"]+)"\)',script))
         used|=set(re.findall(r'emptyBox\("([^"]+)"\)',script))

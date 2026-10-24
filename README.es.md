@@ -114,6 +114,7 @@ pyinstaller packaging/xerj-companion.spec
 | **IA local no disponible** | Ollama no está corriendo o el modelo elegido no está instalado (`ollama list`). |
 | El panel de hardware no detecta RAM/GPU | Solo se sondean Linux, macOS y Windows; la GPU necesita `nvidia-smi`. |
 | La interfaz se ve vieja tras actualizar | Recarga forzada (`Ctrl+Shift+R`); el servidor solo manda `Cache-Control: no-store` para el JSON. |
+| Falta la columna derecha en una ventana estrecha | El diseño de tres columnas necesita ~1180 px. Por debajo se oculta; el botón **▥** de la cabecera la abre como panel lateral. |
 | Windows avisa con el `.exe` | Es normal: el binario no está firmado. Puedes compilarlo tú desde la etiqueta. |
 
 ## Límites y honestidad

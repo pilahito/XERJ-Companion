@@ -117,7 +117,8 @@
     "footer": "UNOFFICIAL COMMUNITY CONCEPT · INTERFACE BY @PILAHITO · FREE & OPEN SOURCE · LOCAL-FIRST",
     "lang.aria": "Switch language",
     "lang.toEnglish": "Switch to English",
-    "lang.toSpanish": "Switch to Spanish"
+    "lang.toSpanish": "Switch to Spanish",
+    "rail.toggle": "Toggle panel"
   },
   "es": {
     "meta.title": "XERJ Companion — No oficial — Inteligencia de código local",
@@ -237,6 +238,7 @@
     "footer": "CONCEPTO COMUNITARIO NO OFICIAL · INTERFAZ POR @PILAHITO · LIBRE Y DE CÓDIGO ABIERTO · LOCAL PRIMERO",
     "lang.aria": "Cambiar idioma",
     "lang.toEnglish": "Cambiar a inglés",
-    "lang.toSpanish": "Cambiar a español"
+    "lang.toSpanish": "Cambiar a español",
+    "rail.toggle": "Mostrar u ocultar el panel"
   }
 }

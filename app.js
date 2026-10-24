@@ -1,6 +1,6 @@
 "use strict";
 const $=id=>document.getElementById(id);
-const LANG_KEY="xerj.lang",STATS_KEY="xerj.stats",RING=327;
+const LANG_KEY="xerj.lang",STATS_KEY="xerj.stats",RAIL_KEY="xerj.rail",RING=327;
 const KW=new Set("fn pub use let mut const async await struct impl enum match if else return self for in while crate mod type trait where move ref Some None Ok Err Result Option def class import from function var new this try catch throw interface export default extends".split(" "));
 let I18N=null,lang="en",view="search",statusState="checking";
 let lastHits=[],lastQuery="",currentIndex="*",activeHit=null,indexData=[],messages=[],busy=false;
@@ -231,6 +231,7 @@ function applyLang(code){
  document.title=t("meta.title");
  document.querySelectorAll("[data-i18n]").forEach(n=>{n.textContent=t(n.dataset.i18n,argsOf(n))});
  document.querySelectorAll("[data-i18n-ph]").forEach(n=>{n.placeholder=t(n.dataset.i18nPh)});
+ document.querySelectorAll("[data-i18n-aria]").forEach(n=>{n.setAttribute("aria-label",t(n.dataset.i18nAria))});
  const other=lang==="en"?"es":"en";
  $("langBtn").textContent=lang.toUpperCase();
  $("langBtn").setAttribute("aria-label",t(other==="en"?"lang.toEnglish":"lang.toSpanish"));
@@ -359,6 +360,11 @@ function renderHardware(hardware,models){
 
 document.querySelectorAll(".nav-item").forEach(button=>button.addEventListener("click",()=>setView(button.dataset.view)));
 $("configureBtn").addEventListener("click",()=>setView("hardware"));
+$("railToggle").addEventListener("click",()=>{
+ const app=document.querySelector(".app");
+ app.classList.toggle("rail-open");
+ try{localStorage.setItem(RAIL_KEY,app.classList.contains("rail-open")?"1":"0")}catch(e){}
+});
 $("langBtn").addEventListener("click",()=>{
  const next=lang==="en"?"es":"en";
  if(!applyLang(next))return;
@@ -394,6 +400,7 @@ $("railPrompt").addEventListener("keydown",e=>{if(e.key==="Enter")sendChat($("ra
 fetch("/i18n.json",{cache:"no-store"}).then(r=>r.json()).then(data=>{
  I18N=data;
  applyLang(currentLang());
+ try{if(localStorage.getItem(RAIL_KEY)==="1")document.querySelector(".app").classList.add("rail-open")}catch(e){}
  renderChat();
  loadModels();
  loadIndexStatus();
