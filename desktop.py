@@ -56,12 +56,11 @@ def main(argv=None):
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--browser", action="store_true", help="skip pywebview and use a browser window")
     parser.add_argument("--no-open", action="store_true", help="serve only, do not open a window (tests)")
-    parser.add_argument("--demo", action="store_true", help="open the interface with sample data (screenshots)")
     args = parser.parse_args(argv)
 
     httpd = ThreadingHTTPServer((args.host, args.port), server.Handler)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
-    url = "http://%s:%d%s" % (args.host, args.port, "?demo=1" if args.demo else "")
+    url = "http://%s:%d" % (args.host, args.port)
     print("XERJ Companion: %s  (Ctrl+C to stop)" % url, flush=True)
 
     if args.no_open:

@@ -8,7 +8,7 @@
 
 ![Concepto de la propuesta](https://github.com/user-attachments/assets/c32bc0f0-00b7-4940-aafb-537e4ed289fc)
 
-*El concepto que se compartió en la propuesta. `?demo=1` lo reproduce cifra por cifra; las capturas de abajo son la app real contra un endpoint local.*
+*Concepto compartido en la propuesta, no una captura de la app. La app solo muestra lo que devuelve tu endpoint; las capturas de abajo son reales.*
 
 ![Vista de búsqueda con resultados, código resaltado y el panel del índice](assets/screenshot-search.png)
 

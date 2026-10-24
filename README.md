@@ -8,7 +8,7 @@
 
 ![Proposal concept](https://github.com/user-attachments/assets/c32bc0f0-00b7-4940-aafb-537e4ed289fc)
 
-*The concept shared in the proposal. `?demo=1` reproduces it number for number; the screenshots below are the real thing against a local endpoint.*
+*Concept shared in the proposal, not a screenshot of the app. The app only shows what your endpoint returns; the captures below are real.*
 
 ![Search view with results, highlighted code and the live index rail](assets/screenshot-search.png)
 

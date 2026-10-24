@@ -118,13 +118,7 @@
     "lang.aria": "Switch language",
     "lang.toEnglish": "Switch to English",
     "lang.toSpanish": "Switch to Spanish",
-    "rail.toggle": "Toggle panel",
-    "demo.badge": "DEMO DATA",
-    "demo.documents": "Documents",
-    "demo.speed": "Docs per second",
-    "demo.elapsed": "Elapsed time",
-    "demo.estimated": "Estimated time",
-    "demo.indexing": "Indexing code (Rust, TypeScript, Markdown…)"
+    "rail.toggle": "Toggle panel"
   },
   "es": {
     "meta.title": "XERJ Companion — No oficial — Inteligencia de código local",
@@ -245,12 +239,6 @@
     "lang.aria": "Cambiar idioma",
     "lang.toEnglish": "Cambiar a inglés",
     "lang.toSpanish": "Cambiar a español",
-    "rail.toggle": "Mostrar u ocultar el panel",
-    "demo.badge": "DATOS DE EJEMPLO",
-    "demo.documents": "Documentos",
-    "demo.speed": "Documentos/segundo",
-    "demo.elapsed": "Tiempo transcurrido",
-    "demo.estimated": "Tiempo estimado",
-    "demo.indexing": "Indexando código (Rust, TypeScript, Markdown…)"
+    "rail.toggle": "Mostrar u ocultar el panel"
   }
 }
